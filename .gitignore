@@ -1,0 +1,10 @@
+.vs/*
+rabbitmq-c.2015.VC.db
+Win32/*
+x64/*
+out/*
+rabbitmq-c-*.tar.gz
+rabbitmq-c-*/
+7za*.exe
+openssl-*.zip
+openssl-*/
