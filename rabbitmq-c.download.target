@@ -26,7 +26,7 @@
 
   <Target Name="rabbitmq-cDownloadTarget" BeforeTargets="CustomBuild;PreBuildEvent;Build" DependsOnTargets="7za">  
       <DownloadPackageTask 
-           package="http://files.freeswitch.org/downloads/libs/rabbitmq-c-$(rabbitmq-cVersion).tar.gz"
+           package="https://github.com/alanxz/rabbitmq-c/archive/refs/tags/v$(rabbitmq-cVersion).tar.gz"
            expectfileordirectory="$(BaseDir)rabbitmq-c-$(rabbitmq-cVersion)/LICENSE-MIT" 
            outputfolder=""
            outputfilename="" 

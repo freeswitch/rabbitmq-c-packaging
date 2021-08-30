@@ -8,3 +8,5 @@ rabbitmq-c-*/
 7za*.exe
 openssl-*.zip
 openssl-*/
+*.tar.gz
+pax_global_header
