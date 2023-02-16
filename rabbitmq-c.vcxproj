@@ -45,7 +45,7 @@
   <PropertyGroup Label="UserMacros" />
   <Target Name="Build">
     <MakeDir Directories="rabbitmq-c-$(rabbitmq-cVersion)/build-$(Platform)" />
-    <Exec Command="cmake .. -DCMAKE_GENERATOR_PLATFORM=$(Platform) -DOPENSSL_INCLUDE_DIR=$(BaseDir)openssl-$(OpenSSLVersion)\include\;$(BaseDir)openssl-$(OpenSSLVersion)\include_x86\ -DOPENSSL_ROOT_DIR=$(BaseDir)openssl-$(OpenSSLVersion)\binaries\$(Platform)\$(Configuration) -T v140" WorkingDirectory="rabbitmq-c-$(rabbitmq-cVersion)/build-$(Platform)" />
+    <Exec Command="cmake .. -DCMAKE_GENERATOR_PLATFORM=$(Platform) -DOPENSSL_INCLUDE_DIR=$(BaseDir)openssl-$(OpenSSLVersion)\include\;$(BaseDir)openssl-$(OpenSSLVersion)\include_x86\ -DOPENSSL_ROOT_DIR=$(BaseDir)openssl-$(OpenSSLVersion)\binaries\$(Platform)\$(Configuration) -T $(DefaultPlatformToolset)" WorkingDirectory="rabbitmq-c-$(rabbitmq-cVersion)/build-$(Platform)" />
     <MsBuild Projects="$(rabbitmq-cLibDir)\build-$(Platform)\librabbitmq\rabbitmq-static.vcxproj" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
   </Target>
 </Project>

@@ -53,11 +53,20 @@ using System.Diagnostics;
             
             if (!FileOrDirectoryExists(package_root))
             {
-                Directory.CreateDirectory(package_root + @"\include");
-                string[] files = {"amqp.h", "amqp_framing.h", "amqp_ssl_socket.h", "amqp_tcp_socket.h", @"..\LICENSE-MIT"};
+                Directory.CreateDirectory(package_root + @"\include\rabbitmq-c");
+                string[] files = {"amqp.h", "amqp_framing.h", "amqp_ssl_socket.h", "amqp_tcp_socket.h", @"rabbitmq-c\amqp.h", @"rabbitmq-c\framing.h", @"rabbitmq-c\ssl_socket.h", @"rabbitmq-c\tcp_socket.h", @"..\LICENSE"};
                 foreach (string f in files) {        
-                    File.Copy(package + @"\librabbitmq\" + f, package_root + @"\include\" + f);
+                    if (!f.Contains("rabbitmq-c") && f.Contains(".h"))
+                    {
+                        string text = File.ReadAllText(package + @"\include\" + f);
+                        text = text.Replace("#warning", "//#warning");
+                        File.WriteAllText(package + @"\include\" + f, text);
+                    }
+
+                    File.Copy(package + @"\include\" + f, package_root + @"\include\" + f);
                 }
+
+                File.Copy(package + @"\build-$(Platform)\include\" + @"rabbitmq-c\export.h", package_root + @"\include\" + @"rabbitmq-c\export.h");
 
                 ZipFile.CreateFromDirectory(@"$(BaseDir)out\packages\" + package + @"-headers\", @"$(BaseDir)out\" + package + @"-headers.zip".ToLower(), CompressionLevel.Optimal, false);
             }
@@ -66,7 +75,7 @@ using System.Diagnostics;
             if (!FileOrDirectoryExists(package_root))
             {
                 Directory.CreateDirectory(package_root + @"\binaries\$(Platform)\$(Configuration)");
-                string[] files = {"librabbitmq.4.lib", @"../../../LICENSE-MIT"};
+                string[] files = {"librabbitmq.4.lib", @"../../../LICENSE"};
                 foreach (string f in files) {        
                     File.Copy(package + @"\Build-$(Platform)\librabbitmq\$(Configuration)\" + f, package_root + @"\binaries\$(Platform)\$(Configuration)\" + f);
                 }

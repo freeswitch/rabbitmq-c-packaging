@@ -27,7 +27,7 @@
   <Target Name="rabbitmq-cDownloadTarget" BeforeTargets="CustomBuild;PreBuildEvent;Build" DependsOnTargets="7za">  
       <DownloadPackageTask 
            package="https://github.com/alanxz/rabbitmq-c/archive/refs/tags/v$(rabbitmq-cVersion).tar.gz"
-           expectfileordirectory="$(BaseDir)rabbitmq-c-$(rabbitmq-cVersion)/LICENSE-MIT" 
+           expectfileordirectory="$(BaseDir)rabbitmq-c-$(rabbitmq-cVersion)/LICENSE" 
            outputfolder=""
            outputfilename="" 
            extractto="$(BaseDir)"
