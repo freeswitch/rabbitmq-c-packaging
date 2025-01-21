@@ -68,7 +68,7 @@ using System.Diagnostics;
 
                 File.Copy(package + @"\build-$(Platform)\include\" + @"rabbitmq-c\export.h", package_root + @"\include\" + @"rabbitmq-c\export.h");
 
-                ZipFile.CreateFromDirectory(@"$(BaseDir)out\packages\" + package + @"-headers\", @"$(BaseDir)out\" + package + @"-headers.zip".ToLower(), CompressionLevel.Optimal, false);
+                ZipFile.CreateFromDirectory(@"$(BaseDir)out\packages\" + package + @"-headers\", @"$(BaseDir)out\" + package + @"_$(rabbitmq-cBuildNumber)" + @"-headers.zip".ToLower(), CompressionLevel.Optimal, false);
             }
 
             package_root = @"$(BaseDir)out\packages\rabbitmq-c-$(rabbitmq-cVersion)-binaries-$(Platform)-$(Configuration)\" + package;
@@ -79,7 +79,7 @@ using System.Diagnostics;
                 foreach (string f in files) {        
                     File.Copy(package + @"\Build-$(Platform)\librabbitmq\$(Configuration)\" + f, package_root + @"\binaries\$(Platform)\$(Configuration)\" + f);
                 }
-                ZipFile.CreateFromDirectory(@"$(BaseDir)out\packages\" + package + @"-binaries-$(Platform)-$(Configuration)\", @"$(BaseDir)out\"+ package + @"-binaries-$(Platform)-$(Configuration).zip".ToLower(), CompressionLevel.Optimal, false);
+                ZipFile.CreateFromDirectory(@"$(BaseDir)out\packages\" + package + @"-binaries-$(Platform)-$(Configuration)\", @"$(BaseDir)out\"+ package + @"_$(rabbitmq-cBuildNumber)" + @"-binaries-$(Platform)-$(Configuration).zip".ToLower(), CompressionLevel.Optimal, false);
             }
 
             return true;
