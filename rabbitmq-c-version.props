@@ -5,7 +5,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros">
     <rabbitmq-cVersion>0.15.0</rabbitmq-cVersion>
-    <rabbitmq-cBuildNumber>0</rabbitmq-cBuildNumber>
+    <rabbitmq-cBuildNumber>1</rabbitmq-cBuildNumber>
     <rabbitmq-cLibDir>$(BaseDir)rabbitmq-c-$(rabbitmq-cVersion)</rabbitmq-cLibDir>
   </PropertyGroup>
   <PropertyGroup>
